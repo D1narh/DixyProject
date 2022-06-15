@@ -1,0 +1,133 @@
+﻿<Window x:Class="DixyProject.Windows.AddEditPtoduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DixyProject.Windows"
+        mc:Ignorable="d"
+        Title="Добавление/редактирование товара" Height="450" Width="800" WindowStartupLocation="CenterScreen" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="/Img/ImgDixy.png" Grid.ColumnSpan="3" />
+        <Label x:Name="place" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Visibility="Hidden"/>
+        <TextBox x:Name="id" Visibility="Hidden" Grid.Row="0" Grid.Column="5"/>
+        <!-- logo.ico как заглушка -->
+        <Ellipse Width="140" Height="140" HorizontalAlignment="Center" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="1">
+            <Ellipse.Fill>
+                <ImageBrush x:Name="Imag" ImageSource="/Logo.ico" Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <TextBlock Visibility="Hidden" x:Name="txtEditor"/>
+
+        <Button x:Name="view" Content="Обзор" Click="view_Click" Grid.Row="3" FontSize="18" HorizontalAlignment="Center" Margin="10" Width="135">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="del" Content="Удалить" Click="del_Click" Grid.Row="4" FontSize="18" HorizontalAlignment="Center" Margin="10" Width="135">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <!--Название-->
+        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Название" FontSize="24" FontFamily="Buda" Margin="0,0,10,0"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox FontSize="28" x:Name="Title" Grid.Row="1" Margin="0,0,10,0"/>
+        </Grid>
+        <!--Категория-->
+        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Категория" FontSize="24" FontFamily="Buda" Margin="0,0,10,0"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ComboBox FontSize="28" x:Name="Category" Grid.Row="1" Margin="0,0,10,0" Loaded="Category_Loaded" />
+        </Grid>
+        <!--Описание-->
+        <Grid Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Описание" FontSize="24" FontFamily="Buda"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox FontSize="28" x:Name="Desc" Grid.Row="1"/>
+        </Grid>
+        <!--Цена-->
+        <Grid Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Цена" FontSize="24" FontFamily="Buda"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBox FontSize="28" x:Name="Price" Grid.Row="1"/>
+        </Grid>
+
+        <Button x:Name="add" Content="Добавить" Background="#E8FFC0" Click="add_Click" Grid.Row="4" Grid.Column="4" FontSize="18" HorizontalAlignment="Center" Margin="10" Width="134">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="save" Content="Сохранить" Background="#E8FFC0" Click="save_Click" Grid.Row="4" Grid.Column="4" FontSize="18" HorizontalAlignment="Center" Margin="10" Width="134">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="back" Content="Назад" Click="back_Click" Grid.Row="4" Grid.Column="5" FontSize="18" HorizontalAlignment="Center" Margin="10" Width="134">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+    </Grid>
+</Window>
