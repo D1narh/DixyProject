@@ -31,7 +31,7 @@ namespace DixyProject.Windows
 
 
             Connect b = new Connect();
-            SqlCommand myCommand = new SqlCommand($"select * from [dbo].[users] where Login='{login}'", b.connect());
+            SqlCommand myCommand = new SqlCommand($"select * from [dbo].[users] where Login='{Login}'", b.connect());
             SqlDataReader myReader = null;
             myReader = myCommand.ExecuteReader();
             StreamWriter name = new StreamWriter("fio.txt");
@@ -42,6 +42,7 @@ namespace DixyProject.Windows
                     Date.Content += (myReader["Registr_date"].ToString());
                     Bal.Content += " " + (myReader["Points"].ToString());
                     position.Content = (myReader["Position_Id"].ToString());
+                    Imag.ImageSource = new BitmapImage(new Uri(DixyProject.App.AppDir + myReader["Image_path"].ToString() + ""));
                 }
             name.Close();
             b.connect().Close();
@@ -100,6 +101,13 @@ namespace DixyProject.Windows
         {
             Catalog catalog = new Catalog(Login,auth);
             catalog.Show();
+            this.Close();
+        }
+
+        private void New_data_Click(object sender, RoutedEventArgs e)
+        {
+            Edit_personal_area edit = new Edit_personal_area(Login,auth);
+            edit.Show();
             this.Close();
         }
     }

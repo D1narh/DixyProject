@@ -53,7 +53,7 @@ namespace DixyProject.Windows
 
                 Connect b = new Connect();
 
-                cmd = new SqlCommand("Select Name,Description,Price,Image from product where Id ="+a+"", b.connect());
+                cmd = new SqlCommand("Select Name,Description,Price=cast(Price as int),Image,Categori_Id from product where Id =" + a+"", b.connect());
 
                 SqlDataReader rea = cmd.ExecuteReader();
                 while (rea.Read())
@@ -63,6 +63,8 @@ namespace DixyProject.Windows
                     Desc.Text = rea[1].ToString();
                     Price.Text = rea[2].ToString();
                     string aa = rea[3].ToString();
+                    image = rea[3].ToString();
+                    Category.SelectedIndex = int.Parse(rea[4].ToString()) - 1;
                     if (aa != "")
                     {
                         Imag.ImageSource = new BitmapImage(new Uri(DixyProject.App.AppDir + rea[3].ToString() + ""));
@@ -77,6 +79,7 @@ namespace DixyProject.Windows
 
         private void save_Click(object sender, RoutedEventArgs e)
         {
+            string fileName = System.IO.Path.GetFileName(txtEditor.Text);
             try
             {
                 if (Title.Text == "" || Desc.Text == "" || Price.Text == "" || Category.SelectedIndex == null)
@@ -85,8 +88,11 @@ namespace DixyProject.Windows
                 }
                 else
                 {
-                    int idCat;
-                    bool result = int.TryParse(Category.SelectedIndex.ToString(), out idCat);
+                    if (put == "1")
+                    {
+                        image = @"Image\Logo.ico";
+                    }
+                    int idCat = Category.SelectedIndex + 1;
                     int prce = Convert.ToInt32(Price.Text);
                     Connect c = new Connect();
                     string query = "UPDATE [dbo].[Product] SET [Name] = @title,[Categori_Id] = @categ,[Description]=@desc,[Price] = @price,[Image] = @img WHERE [Id] = @Id";
@@ -98,7 +104,7 @@ namespace DixyProject.Windows
                             conn.Parameters.Add("@categ", SqlDbType.VarChar).Value = idCat;
                             conn.Parameters.Add("@desc", SqlDbType.VarChar).Value = Desc.Text;
                             conn.Parameters.Add("@price", SqlDbType.VarChar).Value = prce;
-                            conn.Parameters.Add("@img", SqlDbType.VarChar).Value = place.Content;
+                            conn.Parameters.Add("@img", SqlDbType.VarChar).Value = image;
                             conn.Parameters.Add("@Id", SqlDbType.VarChar).Value = id.Text;
 
                             int ss = conn.ExecuteNonQuery();
@@ -171,7 +177,7 @@ namespace DixyProject.Windows
                     conn.Parameters.Add("@categ", SqlDbType.VarChar).Value = idCat;
                     conn.Parameters.Add("@desc", SqlDbType.VarChar).Value = Desc.Text;
                     conn.Parameters.Add("@price", SqlDbType.VarChar).Value = Price.Text;
-                    conn.Parameters.Add("@img", SqlDbType.VarChar).Value = @"Image\" + fileName + "";
+                    conn.Parameters.Add("@img", SqlDbType.VarChar).Value =  fileName;
                     conn.Parameters.Add("@Id", SqlDbType.VarChar).Value = id.Text;
 
                     cmd = new SqlCommand(@"Select TOP(1) product.Image from product where Image = 'Image\" + fileName + "'", c.connect());
@@ -227,7 +233,7 @@ namespace DixyProject.Windows
             }
             else
             {
-                InfoProduct info = new InfoProduct(a,Logins,auth);
+                InfoProduct info = new InfoProduct(id.Text,Logins,auth);
                 info.Show();
                 this.Close();
             }
@@ -255,9 +261,11 @@ namespace DixyProject.Windows
 
         private void del_Click(object sender, RoutedEventArgs e)
         {
+            string image = @"Image\Logo.ico";
             try
             {
-                Imag.ImageSource = null;
+                put = "1";
+                Imag.ImageSource = Imag.ImageSource = new BitmapImage(new Uri(DixyProject.App.AppDir + image + ""));
                 place.Content = "Расположение изображения продукта";
             }
             catch(Exception ex)

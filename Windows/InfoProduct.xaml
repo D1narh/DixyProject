@@ -78,7 +78,7 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label FontSize="27" x:Name="labDesc" Grid.Row="1" Margin="0,-5,0,0"/>
+            <TextBlock FontSize="27" x:Name="labDesc" Grid.Row="1"/>
         </Grid>
         <!--Цена-->
         <Grid Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2">

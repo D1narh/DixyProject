@@ -25,7 +25,6 @@ namespace DixyProject.Windows
     /// </summary>
     public partial class InfoProduct : Window
     {
-        string a;
         //public SqlConnection connection = new SqlConnection(@"Data Source=192.168.221.12;Initial Catalog=Dixy;User ID=user01;Password=01;Max Pool Size=30000;Pooling=true");
 
         int auth = 0;
@@ -46,7 +45,7 @@ namespace DixyProject.Windows
             Connect c = new Connect();
             DataTable buffer = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
-            SqlCommand command = new SqlCommand("SELECT Name, (SELECT Name FROM category WHERE Id=product.Categori_Id) AS Category, Description, Price, Image FROM Product WHERE [ID]=" + a + "", c.connect());
+            SqlCommand command = new SqlCommand("SELECT Name, (SELECT Name FROM category WHERE Id=product.Categori_Id) AS Category, Description, Price=cast(Price as int), Image FROM Product WHERE [Id]=" + id.Content + "", c.connect());
             adapter.SelectCommand = command;
             using (SqlDataReader reader = command.ExecuteReader())
             {
@@ -57,7 +56,7 @@ namespace DixyProject.Windows
                     {
                         titleLabel.Content = reader["Name"].ToString();
                         labCategory.Content = reader["Category"].ToString();
-                        labDesc.Content = reader["Description"].ToString();
+                        labDesc.Text = reader["Description"].ToString();
                         labPrice.Content = reader["Price"].ToString();
                         string aa = reader["Image"].ToString();
                         if (aa != "")

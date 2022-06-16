@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DixyProject.Windows"
         mc:Ignorable="d"
         Title="Личный кабинет" Height="450" Width="800" WindowStartupLocation="CenterScreen">
-       <Grid>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -37,19 +37,19 @@
         <Button x:Name="Exit" Grid.Column="5" Grid.Row="0" Content="Выйти" BorderThickness="0" FontFamily="Buda" FontSize="19" Foreground="#FF0000" Background="White" BorderBrush="White" Margin="103,23,10,24" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="76" Height="45" Click="Exit_Click_1"/>
 
         <!--Данные о личном кабинете-->
-        <Ellipse Width="100" Height="84"  HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2">
+        <Ellipse Width="130"  HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3" Margin="10,0,10,10">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="/Logo.ico" Stretch="UniformToFill"/>
+                <ImageBrush x:Name="Imag"  ImageSource="/Logo.ico" Stretch="UniformToFill"/>
             </Ellipse.Fill>
         </Ellipse>
 
         <Label x:Name="position" Visibility="Hidden"/>
         <Label x:Name="FIO" Content="ФИО: " FontSize="18" FontFamily="Buda" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,7,0,0" Height="35"/>
         <Label x:Name="Date" Content="Дата регистрации: " FontSize="18" FontFamily="Buda" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" Grid.ColumnSpan="3" Margin="0,7,0,0" Height="35"/>
-        <Label x:Name="Bal" Content="**** 2022 n Баллов" FontSize="18" FontFamily="Buda" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,7,0,0" VerticalAlignment="Center" Height="35"/>
+        <Label x:Name="Bal" Content="**** 2022 Баллов" FontSize="18" FontFamily="Buda" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,7,0,0" VerticalAlignment="Center" Height="35"/>
 
         <!--Блок кнопок администратора-->
-        <Button x:Name="New_data" Content="Изменить данные" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="New_data" Content="Изменить данные" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="New_data_Click"/>
         <Button x:Name="New_product" Content="Добавить товар" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Margin="3,7,75,7" HorizontalAlignment="Center" VerticalAlignment="Center" Width="148" Click="New_product_Click" Visibility="Hidden"/>
         <Button x:Name="New_sales" Content="Добавиь акции" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="2" Margin="52,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
 

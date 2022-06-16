@@ -53,13 +53,13 @@ namespace DixyProject.Windows
                 }
                 if (i == 1)
                 {
-                    Cabinet cabinet = new Cabinet(Login.Text,auth);
+                    Cabinet cabinet = new Cabinet(Login.Text, auth);
                     cabinet.Show();
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Вы не ввели логин или пароль", "Ошибка аунтификации");
+                    MessageBox.Show("Вы не ввели логин или пароль, или ввели не верные данные", "Ошибка аунтификации");
                 }
             }
             catch (Exception ex)
@@ -76,6 +76,13 @@ namespace DixyProject.Windows
         {
             Catalog catalog = new Catalog(Logins, auth);
             catalog.Show();
+            this.Close();
+        }
+
+        private void Registr_Click(object sender, RoutedEventArgs e)
+        {
+            Registr reg = new Registr();
+            reg.Show();
             this.Close();
         }
     }
