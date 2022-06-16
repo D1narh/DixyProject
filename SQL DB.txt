@@ -23,10 +23,11 @@ Login nvarchar(30),
 Password nvarchar(30),
 Points int default(0),
 Registr_date date Not null,
-Name nvarchar(40) Not null,
-First_name nvarchar(40) Not null,
+Name nvarchar(40),
+First_name nvarchar(40),
 Last_name nvarchar(40),
-Position_Id int foreign key(Position_Id) references position(Id)
+Position_Id int foreign key(Position_Id) references position(Id) Default 2,
+Image_path nvarchar(1000) default 'Image\Logo.ico'
 )
 
 create table product --Продукт
@@ -81,6 +82,8 @@ insert into position values
 ('Администратор'),
 ('Клиент')
 
+
+Update users SET Position_Id = 1 where Id = 1
 insert into users values 
 ('ddd','111',0,N'14-06-2022','Денис','Гурьянов',null,2),
 ('adm','adm',100,N'10-06-2022','Иван','Иванов','Иванович',1)
@@ -100,7 +103,7 @@ insert into product values
 ('Сардельки', 2,'', 189.99, N'Image\sardelki.jpg'),
 ('Йогурт питьевой', 1,'', 129.99, N'Image\yogurtpit.jpg'),
 ('Сыр плавленый', 1,'', 79.99, N'Image\cheese.jpg'),
-('Каймак', 1,'', 76.99, N'Image\kaimak.png'),
+('Каймак', 1,'', 76.99, N'Image\kaimak.png')
 
 insert into product values
 ('Каймак', 1,'нннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннннн', 76.99, N'Image\kaimak.png')
@@ -133,3 +136,13 @@ Select * from favorites
 update basket SET Amount = Amount + 1 where Client_Id = 1 and Product_Id = 1
 
 Select * from basket
+
+update users SET Image_path = 'Image\Logo.ico' where Id = 1
+
+
+Select Categori_Id from product
+SELECT Name, (SELECT Name FROM category WHERE Id=product.Categori_Id) AS Category, Description, Price = cast(Price as int), Image FROM Product WHERE [ID]= 1
+
+Select * from product
+
+Select * from users
