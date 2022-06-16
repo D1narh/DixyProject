@@ -52,9 +52,6 @@ namespace DixyProject.Windows
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            Checks chks = new Checks();
-            chks.Show();
-            Close();
         }
 
         private void doIt_Click(object sender, RoutedEventArgs e)

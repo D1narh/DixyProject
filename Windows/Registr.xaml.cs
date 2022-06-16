@@ -42,6 +42,12 @@ namespace DixyProject.Windows
 
         private void regist_Click(object sender, RoutedEventArgs e)
         {
+            if(Login.Text == "" || Password.Text == "")
+            {
+                MessageBox.Show("Введите все данные перед регистрацией", "Внимание");
+            }
+            else
+            {
             Connect b = new Connect();
             Console.WriteLine(Login.Text + " and " + Password.Text);
 
@@ -57,35 +63,36 @@ namespace DixyProject.Windows
             {
                 i++;
             }
-            if (i >= 1)
-            {
-                MessageBox.Show("Аккаунт с таких логином уже существует", "Ошибка");
-            }
-            else
-            {
-                string query = "INSERT INTO [dbo].[users](Login,Password,Registr_date) VALUES(@Login,@Password,@Registr_date)";
-                using (b.connect())
+                if (i >= 1)
                 {
-
-                    using (SqlCommand conn = new SqlCommand(query, b.connect()))
+                    MessageBox.Show("Аккаунт с таких логином уже существует", "Ошибка");
+                }
+                else
+                {
+                    string query = "INSERT INTO [dbo].[users](Login,Password,Registr_date) VALUES(@Login,@Password,@Registr_date)";
+                    using (b.connect())
                     {
-                        conn.Parameters.Add("@Login", SqlDbType.VarChar).Value = Login.Text;
-                        conn.Parameters.Add("@Password", SqlDbType.VarChar).Value = Password.Text;
-                        conn.Parameters.Add("@Registr_date", SqlDbType.VarChar).Value = System.DateTime.Now;
+
+                        using (SqlCommand conn = new SqlCommand(query, b.connect()))
+                        {
+                            conn.Parameters.Add("@Login", SqlDbType.VarChar).Value = Login.Text;
+                            conn.Parameters.Add("@Password", SqlDbType.VarChar).Value = Password.Text;
+                            conn.Parameters.Add("@Registr_date", SqlDbType.VarChar).Value = System.DateTime.Now;
 
 
-                        int ss = conn.ExecuteNonQuery();
-                        if (ss > 0)
-                        {
-                            Cabinet personal = new Cabinet(Login.Text,Auth);
-                            personal.Show();
-                            this.Close();
+                            int ss = conn.ExecuteNonQuery();
+                            if (ss > 0)
+                            {
+                                Cabinet personal = new Cabinet(Login.Text, Auth);
+                                personal.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Noke");
+                            }
+                            b.connect().Close();
                         }
-                        else
-                        {
-                            MessageBox.Show("Noke");
-                        }
-                        b.connect().Close();
                     }
                 }
             }

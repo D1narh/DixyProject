@@ -15,7 +15,7 @@
         <Image Source="/Img/ImgDixy.png" Margin="0,0,0,5"/>
         <Button x:Name="back" Content="Вернуться назад" Grid.Row="1" Margin="159,10,160,10" FontSize="20" Height="37"/>
 
-        <ListBox x:Name="Receipt" Grid.Row="2">
+        <ListBox x:Name="list" Grid.Row="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Margin="5">

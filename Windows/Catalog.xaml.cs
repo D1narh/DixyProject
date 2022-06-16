@@ -43,11 +43,13 @@ namespace DixyProject.Windows
 
         int auth = 0;
         string Login;
+        int IDD;
 
-        public Catalog(string login,int a)
+        public Catalog(int id,string login,int a)
         {
             auth = a;
             Login = login;
+            IDD = id;
 
             InitializeComponent();
 
@@ -85,6 +87,13 @@ namespace DixyProject.Windows
                 cabinet.Show();
                 this.Close();
             }
+        }
+
+        private void cart_Click(object sender, RoutedEventArgs e)
+        {
+            Cart cart = new Cart(IDD, Login, auth);
+            cart.Show();
+            this.Close();
         }
 
         public void Start()

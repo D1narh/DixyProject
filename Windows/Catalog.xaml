@@ -27,7 +27,7 @@
         <Image Source="/Img/ImgDixy.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,3" />
         <Button x:Name="sales" Content="Акции" Grid.Column="2"  Margin="20,5,0,5" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White"/>
         <Button x:Name="cabinet" Content="Кабинет" Grid.Column="3"  Margin="10,5" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White" Click="cabinet_Click"/>
-        <Button x:Name="cart" Content="Корзина" Grid.Column="4"  Margin="0,5,20,5" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White"/>
+        <Button x:Name="cart" Content="Корзина" Grid.Column="4"  Margin="0,5,20,5" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White" Click="cart_Click"/>
 
         <Label Content="Каталог товаров" FontWeight="Bold" FontSize="24" Foreground="#EF7D05"  Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0"/>
 

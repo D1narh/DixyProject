@@ -26,6 +26,7 @@ namespace DixyProject.Windows
 
         int auth = 0;
         string Logins = "";
+        int IDD = 0;
 
         public Auth()
         {
@@ -74,7 +75,7 @@ namespace DixyProject.Windows
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Catalog catalog = new Catalog(Logins, auth);
+            Catalog catalog = new Catalog(IDD, Logins, auth);
             catalog.Show();
             this.Close();
         }

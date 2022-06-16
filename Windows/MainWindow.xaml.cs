@@ -37,6 +37,7 @@ namespace DixyProject
 
         int auth = 0;
         string Logins = "";
+        int IDD = 0;
 
         public MainWindow()
         {
@@ -167,14 +168,14 @@ namespace DixyProject
 
         private void Sales_Click_1(object sender, RoutedEventArgs e)
         {
-            Catalog catalog = new Catalog(Logins,auth);
+            Catalog catalog = new Catalog(IDD, Logins,auth);
             catalog.Show();
             this.Close();
         }
 
         private void Catalog_Click_1(object sender, RoutedEventArgs e)
         {
-            Catalog catalog = new Catalog(Logins, auth);
+            Catalog catalog = new Catalog(IDD, Logins, auth);
             catalog.Show();
             this.Close();
         }

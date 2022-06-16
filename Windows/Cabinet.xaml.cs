@@ -24,6 +24,7 @@ namespace DixyProject.Windows
     {
         int auth = 1;
         string Login;
+        int IDD;
         public Cabinet(string login,int a)
         {
             Login = login;
@@ -43,6 +44,7 @@ namespace DixyProject.Windows
                     Bal.Content += " " + (myReader["Points"].ToString());
                     position.Content = (myReader["Position_Id"].ToString());
                     Imag.ImageSource = new BitmapImage(new Uri(DixyProject.App.AppDir + myReader["Image_path"].ToString() + ""));
+                    IDD = int.Parse(myReader["Id"].ToString());
                 }
             name.Close();
             b.connect().Close();
@@ -66,7 +68,7 @@ namespace DixyProject.Windows
 
         private void Receipt_Click(object sender, RoutedEventArgs e)
         {
-            Checks checks = new Checks();
+            Checks checks = new Checks(IDD,Login,auth);
             checks.Show();
             this.Close();
         }
@@ -92,14 +94,14 @@ namespace DixyProject.Windows
 
         private void New_product_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPtoduct ptoduct = new AddEditPtoduct(null,Login);
+            AddEditPtoduct ptoduct = new AddEditPtoduct(IDD, null,Login);
             ptoduct.Show();
             this.Close();
         }
 
         private void Catalog_Click(object sender, RoutedEventArgs e)
         {
-            Catalog catalog = new Catalog(Login,auth);
+            Catalog catalog = new Catalog(IDD, Login,auth);
             catalog.Show();
             this.Close();
         }
@@ -108,6 +110,20 @@ namespace DixyProject.Windows
         {
             Edit_personal_area edit = new Edit_personal_area(Login,auth);
             edit.Show();
+            this.Close();
+        }
+
+        private void New_sales_Click(object sender, RoutedEventArgs e)
+        {
+            AddSales sales = new AddSales(Login,auth);
+            sales.Show();
+            this.Close();
+        }
+
+        private void Basket_Click(object sender, RoutedEventArgs e)
+        {
+            Cart cart = new Cart(IDD, Login, auth);
+            cart.Show();
             this.Close();
         }
     }

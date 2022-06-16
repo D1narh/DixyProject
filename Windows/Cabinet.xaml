@@ -33,7 +33,7 @@
         <Image Source="/Img/ImgDixy.png" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
         <Button x:Name="Catalog" Grid.Column="2" Grid.Row="0" Content="Каталог товаров" BorderThickness="0" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White" Margin="17,23,60,24" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="165" Height="45" Click="Catalog_Click"/>
         <Button x:Name="Sales" Grid.Column="3" Grid.Row="0" Content="Акции" BorderThickness="0" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White" Margin="70,23,86,24" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="77" Height="45"/>
-        <Button x:Name="Basket" Grid.Column="4" Grid.Row="0" Content="Корзина" BorderThickness="0" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White" Margin="31,23,82,24" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="95" Height="45"/>
+        <Button x:Name="Basket" Grid.Column="4" Grid.Row="0" Content="Корзина" BorderThickness="0" FontFamily="Buda" FontSize="19" Foreground="#EF7D05" Background="White" BorderBrush="White" Margin="31,23,82,24" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="95" Height="45" Click="Basket_Click"/>
         <Button x:Name="Exit" Grid.Column="5" Grid.Row="0" Content="Выйти" BorderThickness="0" FontFamily="Buda" FontSize="19" Foreground="#FF0000" Background="White" BorderBrush="White" Margin="103,23,10,24" Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="76" Height="45" Click="Exit_Click_1"/>
 
         <!--Данные о личном кабинете-->
@@ -51,7 +51,7 @@
         <!--Блок кнопок администратора-->
         <Button x:Name="New_data" Content="Изменить данные" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="New_data_Click"/>
         <Button x:Name="New_product" Content="Добавить товар" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="4" Grid.Row="5" Grid.ColumnSpan="2" Margin="3,7,75,7" HorizontalAlignment="Center" VerticalAlignment="Center" Width="148" Click="New_product_Click" Visibility="Hidden"/>
-        <Button x:Name="New_sales" Content="Добавиь акции" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="2" Margin="52,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden"/>
+        <Button x:Name="New_sales" Content="Добавиь акции" FontFamily="Buda" FontSize="19" Foreground="Black" Grid.Column="5" Grid.Row="5" Grid.ColumnSpan="2" Margin="52,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" Click="New_sales_Click"/>
 
         <!--Блок кнопок пользователя-->
         <Button x:Name="Receipt" Content="Чеки" Grid.Row="6" FontFamily="Buda" FontSize="19" Foreground="Black" Background="White" BorderBrush="White" HorizontalAlignment="Left" Margin="10,0,56,0" Click="Receipt_Click"/>

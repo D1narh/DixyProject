@@ -29,6 +29,7 @@ namespace DixyProject.Windows
 
         int auth = 0;
         string Logins;
+        int IDD;
 
         SqlCommand cmd;
         SqlDataAdapter adapter;
@@ -40,7 +41,7 @@ namespace DixyProject.Windows
             auth = au;
             Logins = login;
             InitializeComponent();
-            id.Content = a;
+            IDD = int.Parse(a);
 
             Connect c = new Connect();
             DataTable buffer = new DataTable();
@@ -93,14 +94,14 @@ namespace DixyProject.Windows
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
-            AddEditPtoduct ae = new AddEditPtoduct(id.Content.ToString(), Logins);
+            AddEditPtoduct ae = new AddEditPtoduct(IDD,id.Content.ToString(), Logins);
             ae.Show();
             Close();
         }
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
-            Catalog cat = new Catalog(Logins, auth);
+            Catalog cat = new Catalog(IDD, Logins, auth);
             cat.Show();
             Close();
         }

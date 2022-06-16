@@ -34,10 +34,11 @@ namespace DixyProject.Windows
 
         int auth = 2;
         string Logins;
+        int IDD;
 
         int hh;
 
-        public AddEditPtoduct(string a,string login)
+        public AddEditPtoduct(int idd,string a,string login)
         {
             Logins = login;
             InitializeComponent();
@@ -210,7 +211,7 @@ namespace DixyProject.Windows
                     {
                         MessageBox.Show("Продукт был добавлен в базу данных!");
 
-                        Catalog catalog = new Catalog(Logins,auth);
+                        Catalog catalog = new Catalog(IDD,Logins,auth);
                         catalog.Show();
                         this.Close();
                     }
