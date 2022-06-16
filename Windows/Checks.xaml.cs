@@ -40,6 +40,8 @@ namespace DixyProject.Windows
         {
             InitializeComponent();
             IDD = id;
+            Logins = log;
+            auth = a;
 
             Start();
         }
@@ -67,6 +69,13 @@ namespace DixyProject.Windows
                 });
             }
             list.ItemsSource = Receip;
+        }
+
+        private void back_Click(object sender, RoutedEventArgs e)
+        {
+            Cabinet cabinet = new Cabinet(Logins, auth);
+            cabinet.Show();
+            this.Close();
         }
     }
 }

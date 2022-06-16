@@ -5,24 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DixyProject.Windows"
         mc:Ignorable="d"
-        Title="Чеки" Height="450" Width="600" WindowStartupLocation="CenterScreen">
+        Title="Чеки" Height="450" Width="400" WindowStartupLocation="CenterScreen">
     <Grid>
          <Grid.RowDefinitions>
             <RowDefinition Height="117*"/>
             <RowDefinition Height="57*"/>
             <RowDefinition Height="245*"/>
         </Grid.RowDefinitions>
-        <Image Source="/Img/ImgDixy.png" Margin="0,0,0,5"/>
-        <Button x:Name="back" Content="Вернуться назад" Grid.Row="1" Margin="159,10,160,10" FontSize="20" Height="37"/>
+        <Image Source="/Img/ImgDixy.png"/>
+        <Button x:Name="back" Content="Вернуться назад" Grid.Row="1" Margin="109,10" FontSize="20" Height="37" Click="back_Click"/>
 
         <ListBox x:Name="list" Grid.Row="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="5">
-                        <Image Width="100" Height="75" Source="{Binding Path=ImagePath}" />
-                        <TextBlock FontSize="16" Text="{Binding Path=Title}" HorizontalAlignment="Center" />
-                        <TextBlock FontSize="16" Text="{Binding Path=Company}" HorizontalAlignment="Center" />
-                    </StackPanel>
+                    <Grid Background="#ffffff" x:Name="grid1">
+                        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="#EF7D05" BorderThickness="2">
+                            <Border.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="10"/>
+                                </Style>
+                            </Border.Resources>
+                            <Grid x:Name="forma" Width="349" Height="80">
+                                <Label FontSize="16" Content="{Binding Path=Id}" HorizontalAlignment="Center" Visibility="Hidden"/>
+                                <Label FontSize="16" Content="{Binding Path=Price}" HorizontalAlignment="Center" Margin="-240,0,0,0"/>
+                                <Label FontSize="16" Content="{Binding Path=Date}" HorizontalAlignment="Center" Margin="160,0,0,0" />
+                                <Button x:Name="See" Content="Просмотреть" Width="120" Height="30" Background="White" BorderThickness="0" FontSize="17" Foreground="#EF7D05" Margin="-200,40,0,0">
+                                    <Button.Resources>
+                                        <Style TargetType="Border">
+                                            <Setter Property="CornerRadius" Value="8"/>
+                                        </Style>
+                                    </Button.Resources>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

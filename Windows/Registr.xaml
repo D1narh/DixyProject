@@ -47,7 +47,7 @@
             </Grid.RowDefinitions>
             <TextBox x:Name="Password" FontSize="24" FontFamily="Buda"/>
             <!--Кнопка Регистрации-->
-            <Button x:Name="regist" Grid.Row="1" Content="Регистрация" FontSize="20" FontFamily="Buda" Background="White" BorderThickness="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="regist_Click">
+            <Button x:Name="regist" Grid.Row="1" Content="Регистрация" FontSize="20" FontFamily="Buda" Background="White" BorderThickness="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Click="regist_Click" IsDefault="True">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="10"/>
